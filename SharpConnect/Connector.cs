@@ -260,19 +260,15 @@ namespace SharpConnect
         /// <param name="games"></param>
         private void ListGames(string[] games)
         {
-            // Add all games to temp list
-            List<string> temp = new List<string>();
+            // Clear list and add all from games
+            lstGames.Clear();
             for (int i = 1; i <= (games.Length - 1); i++)
             {
-                temp.Add(games[i]);
+                lstGames.Add(games[i]);
             }
 
-            // Check if there are any differents and display them if so
-            if (!temp.SequenceEqual(lstGames))
-            {
-                lstGames = temp;
-                GamesListChanged(this, new EventArgs());
-            }
+            // Trigger event since games list has been changed
+            GamesListChanged(this, new EventArgs());
         }
     }
 }
